@@ -1,34 +1,40 @@
-# Use the official Dart image as the base image for the first stage
-FROM cirrusci/flutter:2.2.3  AS builder
+# Install Operating system and dependencies
+FROM ubuntu:20.04
 
-# Set the working directory
-WORKDIR /app
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Copy only the necessary files for building the web app
-COPY . .
+RUN apt-get update 
+RUN apt-get install -y curl git wget unzip libgconf-2-4 gdb libstdc++6 libglu1-mesa fonts-droid-fallback python3
+RUN apt-get clean
 
+ENV DEBIAN_FRONTEND=dialog
+ENV PUB_HOSTED_URL=https://pub.flutter-io.cn
+ENV FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+
+# download Flutter SDK from Flutter Github repo
+RUN git clone https://github.com/flutter/flutter.git /usr/local/flutter
+
+# Set flutter environment path
+ENV PATH="/usr/local/flutter/bin:/usr/local/flutter/bin/cache/dart-sdk/bin:${PATH}"
+
+# Run flutter doctor
+RUN flutter doctor
+
+# Enable flutter web
 RUN flutter channel master
 RUN flutter upgrade
 RUN flutter config --enable-web
 
-# Install dependencies
-RUN flutter pub get
+# Copy files to container and build
+RUN mkdir /app/
+COPY . /app/
+WORKDIR /app/
+RUN flutter build web
 
-# Build the Flutter web app
-RUN dart pub global activate webdev
-RUN dart pub global run webdev build
+# Record the exposed port
+EXPOSE 9000
 
-# Use NGINX as the base image for the second stage
-FROM nginx:alpine
+# make server startup script executable and start the web server
+RUN ["chmod", "+x", "/app/server/server.sh"]
 
-# Set the working directory for NGINX
-WORKDIR /usr/share/nginx/html
-
-# Copy the built Flutter web app from the builder stage
-COPY --from=builder /app/build/web/ .
-
-# Expose port 80 for serving the web application
-EXPOSE 80
-
-# Command to start the web server
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT [ "/app/server/server.sh"]
