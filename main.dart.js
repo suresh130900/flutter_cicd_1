@@ -19401,7 +19401,7 @@ A.XP.prototype={
 $1(a){var s=A.cW().b
 if(s==null)s=null
 else{s=s.canvasKitBaseUrl
-if(s==null)s=null}return(s==null?"https://www.gstatic.com/flutter-canvaskit/1dfcb6967dd1525b4679d5f5560b3f50b5ddd825/":s)+a},
+if(s==null)s=null}return(s==null?"https://www.gstatic.com/flutter-canvaskit/a5173fe3a91264caa29a9c9edcaf7d61279e790d/":s)+a},
 $S:90}
 A.Y0.prototype={
 $1(a){this.a.remove()
