@@ -17,7 +17,13 @@ jobs:
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.0.0' # Adjust the Flutter version as needed
+        flutter-version: '3.16' # Adjust the Flutter version as needed
+
+    - name: Flutter Channel
+      run: flutter channel master
+      
+    - name: Flutter upgrade
+      run: flutter upgrade
 
     - name: Install Dependencies
       run: flutter pub get
@@ -27,3 +33,13 @@ jobs:
         if [ -d "build/web" ]; then
           echo "Removing existing build directory."
           rm -rf build/web
+
+    
+    - name: Build Web
+      run: flutter build web
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: build/web
