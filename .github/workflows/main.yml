@@ -17,7 +17,7 @@ jobs:
       - name: 'Build Web App'
         run: flutter build web
       - name: Build web directory 
-        run: cp -R build/web/* $GITHUB_WORKSPACE/build/web/
+        run: cp -Rf build/web/* $GITHUB_WORKSPACE/build/web/
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
