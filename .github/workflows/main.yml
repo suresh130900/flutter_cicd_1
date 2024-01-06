@@ -30,7 +30,7 @@ jobs:
 
     - name: Check and Remove Existing Build Directory
       run: |
-        if [ -d "build/web" ]; then
+        if [ -d "build/web" ] then
           echo "Removing existing build directory."
           rm -rf build/web
 
