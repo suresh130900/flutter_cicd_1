@@ -73,6 +73,14 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            Text(
+              "Hello world this the testing of the CI with github actions",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
       ),
