@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            Text(
+            const Text(
               "Hello world this the testing of the CI with github actions",
               style: TextStyle(
                 color: Colors.black,
@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
+            const Text(
               "Hello world this the testing of the CI with WatchTower to see if the CICD works",
               style: TextStyle(
                 color: Colors.black,
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
+            const Text(
               "Hello world this the testing of the CI with WatchTower to see if the CICD works Again",
               style: TextStyle(
                 color: Colors.black,
