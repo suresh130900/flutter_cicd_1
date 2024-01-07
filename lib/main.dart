@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const Text(
-              "Hello world this the testing of the CI with WatchTower to see if the CICD works Again",
+              "Hello world this the testing of the CI with WatchTower to see if the CICD works Again and testing",
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 40,
