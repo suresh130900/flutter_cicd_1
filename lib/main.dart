@@ -80,6 +80,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            Text(
+              "Hello world this the testing of the CI with WatchTower to see if the CICD works Again",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
       ),
