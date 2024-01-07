@@ -88,6 +88,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            const Text(
+              "Hello world this Suresh Chaudhary",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
       ),
