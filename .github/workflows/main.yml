@@ -26,4 +26,5 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
+          repository: suresh130900/flutter_docker_cicd
           tags: name
